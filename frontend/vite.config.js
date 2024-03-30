@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://fullstack-hyk64t42s-caffrey928s-projects.vercel.app/",
+        target: "https://fullstack-984qmggq6-caffrey928s-projects.vercel.app/",
         changeOrigin: true,
       },
     },
