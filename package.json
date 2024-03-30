@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cd backend && yarn start",
-    "build": "cd frontend && yarn build --output public",
+    "build": "cd frontend && yarn build",
     "install": "cd frontend && yarn install --production=false && cd ../backend && yarn"
   }
 }
