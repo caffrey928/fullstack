@@ -1,4 +1,4 @@
-import { prisma } from "../../../../adapters";
+import { prisma } from "../../../../adapters.js";
 
 export async function getAllUsers(req, res) {
   const allUsers = await prisma.user.findMany();
