@@ -7,13 +7,13 @@ import { prisma } from "./adapters";
 import rootRouter from "./routes";
 import { csrfErrorHandler, doubleCsrfProtection } from "./csrf";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const frontendDir = path.join(__dirname, "../../frontend/dist");
+// const frontendDir = path.join(__dirname, "../../frontend/dist");
 
 const port = process.env.PORT || 8000;
 
 const app = express();
 
-app.use(express.static(frontendDir));
+// app.use(express.static(frontendDir));
 
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
@@ -42,7 +42,8 @@ app.use(rootRouter);
 
 app.get("*", (req, res) => {
   if (!req.originalUrl.startsWith("/api")) {
-    return res.sendFile(path.join(frontendDir, "index.html"));
+    // return res.sendFile(path.join(frontendDir, "index.html"));
+    return "Hello World!"
   }
   return res.status(404).send();
 });
