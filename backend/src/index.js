@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { prisma } from "./adapters.js";
 import rootRouter from "./routes/index.js";
 import { csrfErrorHandler, doubleCsrfProtection } from "./csrf.js";
+import createMemoryStore from "memorystore"
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // const frontendDir = path.join(__dirname, "../../frontend/dist");
 
@@ -18,14 +19,20 @@ const app = express();
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
+
+const MemoryStore = createMemoryStore(session);
+
 app.use(
   session({
     cookie: {
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: null, // session cookie
+      maxAge: 86400000, // session cookie
     },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     // use random secret
     name: "sessionId", // don't omit this option
     secret: process.env.SESSION_SECRET,
