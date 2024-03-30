@@ -55,5 +55,3 @@ app.listen(port, () => {
 process.on("exit", async () => {
   await prisma.$disconnect();
 });
-
-module.exports = app;
