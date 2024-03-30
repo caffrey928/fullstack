@@ -43,7 +43,7 @@ app.use(rootRouter);
 app.get("*", (req, res) => {
   if (!req.originalUrl.startsWith("/api")) {
     // return res.sendFile(path.join(frontendDir, "index.html"));
-    return "Hello World!"
+    return "Hello World!!"
   }
   return res.status(404).send();
 });
