@@ -1,7 +1,8 @@
-import { doubleCsrf } from "csrf-csrf";
+// import { doubleCsrf } from "csrf-csrf";
+const { doubleCsrf } = require("csrf-csrf");
 
 const isProd = process.env.NODE_ENV === "production";
-export const {
+const {
   invalidCsrfTokenError, // This is just for convenience if you plan on making your own middleware.
   generateToken, // Use this in your routes to provide a CSRF hash cookie and token.
   validateRequest, // Also a convenience if you plan on making your own middleware.
@@ -21,7 +22,7 @@ export const {
   getTokenFromRequest: (req) => req.headers["x-csrf-token"], // A function that returns the token from the request
 });
 
-export function csrfErrorHandler(error, req, res, next) {
+function csrfErrorHandler(error, req, res, next) {
   if (error == invalidCsrfTokenError) {
     res.status(403).json({
       error: "invalid csrf token",
@@ -29,4 +30,12 @@ export function csrfErrorHandler(error, req, res, next) {
   } else {
     next();
   }
+}
+
+module.exports = {
+  invalidCsrfTokenError,
+  generateToken,
+  validateRequest,
+  doubleCsrfProtection,
+  csrfErrorHandler
 }

@@ -1,14 +1,14 @@
-import dotenv from "dotenv";
-import express from "express";
-import session from "express-session";
-import cookieParser from "cookie-parser";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-import { prisma } from "./adapters.js";
-import rootRouter from "./routes/index.js";
-import { csrfErrorHandler, doubleCsrfProtection } from "./csrf.js";
-import createMemoryStore from "memorystore"
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const dotenv = require("dotenv");
+const express = require("express");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const { prisma } = require("./adapters.js");
+const rootRouter = require("./routes/index.js");
+const { csrfErrorHandler, doubleCsrfProtection } = require("./csrf.js");
+// import path, { dirname } from "path";
+// import { fileURLToPath } from "url";
+const createMemoryStore = require("memorystore");
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 // const frontendDir = path.join(__dirname, "../../frontend/dist");
 
 dotenv.config()
@@ -65,3 +65,5 @@ app.listen(port, () => {
 process.on("exit", async () => {
   await prisma.$disconnect();
 });
+
+module.exports = app;

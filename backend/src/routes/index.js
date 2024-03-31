@@ -1,5 +1,7 @@
-import express from "express";
-import glob from "glob";
+// import express from "express";
+// import glob from "glob";
+const express = require("express");
+const glob = require("glob");
 
 const rootRouter = express.Router();
 
@@ -15,6 +17,6 @@ async function autoloadRoutes() {
   });
   return Promise.all(importTasks);
 }
-await autoloadRoutes();
+autoloadRoutes();
 
-export default rootRouter;
+module.exports = rootRouter;
