@@ -11,8 +11,6 @@ const path = require("path");
 const createMemoryStore = require("memorystore");
 const cors = require('cors');
 
-// Allow all origins
-app.use(cors());
 // const __dirname = dirname(fileURLToPath(import.meta.url));
 // const frontendDir = path.join(__dirname, "../../frontend/dist");
 
@@ -23,6 +21,8 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 // app.use(express.static(frontendDir));
+// Allow all origins
+app.use(cors());
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === "production") {
