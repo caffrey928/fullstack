@@ -22,7 +22,9 @@ const app = express();
 
 // app.use(express.static(frontendDir));
 // Allow all origins
-app.use(cors());
+app.use(cors({
+  origin: true
+}));
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === "production") {
