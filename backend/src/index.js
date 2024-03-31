@@ -54,8 +54,8 @@ app.use(rootRouter);
 
 app.get("*", (req, res) => {
   if (!req.originalUrl.startsWith("/api")) {
-    // return res.sendFile(path.join(__dirname, ".", "index.html"));
-    return "Hello World!!"
+    return res.sendFile(path.join(__dirname, ".", "index.html"));
+    // return "Hello World!!"
   }
   return res.status(404).send();
 });
