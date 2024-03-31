@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
@@ -9,6 +10,8 @@ import { csrfErrorHandler, doubleCsrfProtection } from "./csrf.js";
 import createMemoryStore from "memorystore"
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // const frontendDir = path.join(__dirname, "../../frontend/dist");
+
+dotenv.config()
 
 const port = process.env.PORT || 8000;
 
