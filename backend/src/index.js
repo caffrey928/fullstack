@@ -9,6 +9,10 @@ const path = require("path");
 // import path, { dirname } from "path";
 // import { fileURLToPath } from "url";
 const createMemoryStore = require("memorystore");
+const cors = require('cors');
+
+// Allow all origins
+app.use(cors());
 // const __dirname = dirname(fileURLToPath(import.meta.url));
 // const frontendDir = path.join(__dirname, "../../frontend/dist");
 
